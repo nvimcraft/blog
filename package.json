@@ -10,7 +10,9 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch"
   },
   "packageManager": "pnpm@10.28.2",
   "pnpm": {
@@ -23,6 +25,7 @@
     "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
     "eslint": "^10.0.1",
     "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.0"
   }
 }

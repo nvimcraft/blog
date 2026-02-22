@@ -1,0 +1,117 @@
+{
+  "project": {
+    "name": "rjleyva-blog",
+    "architecture": "monorepo",
+    "deployment": {
+      "platform": "cloudflare-workers",
+      "mode": "spa"
+    }
+  },
+  "stack": {
+    "client": {
+      "buildTool": "vite",
+      "framework": "react",
+      "language": "typescript",
+      "router": {
+        "name": "tanstack-router",
+        "routingMode": "file-based",
+        "codeSplitting": "auto"
+      }
+    },
+    "server": {
+      "backend": "supabase",
+      "usedFor": ["auth", "comments", "reactions"]
+    },
+    "email": {
+      "provider": "resend",
+      "usedFor": ["newsletter"]
+    }
+  },
+  "content": {
+    "source": "local-markdown",
+    "format": "markdown",
+    "mdx": false,
+    "repository": "github",
+    "authoring": {
+      "ownerOnly": true,
+      "createdLocally": true,
+      "syncedViaGitPush": true
+    },
+    "uiGoals": {
+      "home": "hero + top3LatestPosts + linkToAllPosts",
+      "postsIndex": "all posts list",
+      "postDetail": "markdown content + optional cover image + comments + reactions"
+    },
+    "postPermissions": {
+      "owner": { "create": true, "edit": true, "delete": true },
+      "authenticatedUser": { "create": false, "edit": false, "delete": false },
+      "guest": { "create": false, "edit": false, "delete": false }
+    }
+  },
+  "authentication": {
+    "provider": "supabase-auth",
+    "requiredFields": ["username", "email", "password"],
+    "profile": {
+      "canUpdateUsername": true,
+      "canUpdateEmail": true,
+      "canUpdatePassword": true,
+      "updatesReflectInRealtime": true
+    },
+    "publicExposure": {
+      "commentDisplaysUsernameOnly": true,
+      "emailIsPrivate": true
+    }
+  },
+  "features": {
+    "comments": {
+      "authenticatedUser": {
+        "create": true,
+        "editOwn": true,
+        "deleteOwn": true,
+        "editOthers": false,
+        "deleteOthers": false
+      },
+      "guest": { "create": false, "edit": false, "delete": false },
+      "enforcement": "supabase-rls"
+    },
+    "reactions": {
+      "authenticatedUser": { "add": true, "edit": true, "remove": true },
+      "guest": { "add": false, "remove": false },
+      "enforcement": "supabase-rls"
+    }
+  },
+  "visibility": {
+    "guest": {
+      "canViewFullPost": true,
+      "canViewCommentCount": true,
+      "canViewReactionCount": true
+    }
+  },
+  "newsletter": {
+    "enabled": true,
+    "provider": "resend",
+    "requiresAccount": false,
+    "subscription": {
+      "requiresEmail": true,
+      "requiresEmailVerification": true,
+      "verificationMethod": "email-confirmation-link"
+    },
+    "linkAccess": {
+      "whenEmailLinkClicked": {
+        "requireEmailReEntry": true,
+        "verificationType": "email-match-confirmation"
+      }
+    }
+  },
+  "docs": {
+    "entrypoint": "docs/plan.json",
+    "details": {
+      "client": "docs/client.instructions.md",
+      "server": "docs/server.instructions.md",
+      "deployment": "docs/deployment.cloudflare.md",
+      "supabase": "docs/supabase.instructions.md",
+      "newsletter": "docs/newsletter.instructions.md",
+      "adrs": "docs/adr/"
+    }
+  }
+}

@@ -7,8 +7,6 @@ Goal:
   - Inserts are allowed only for the owner (useful for non-trigger flows),
     but in your system profiles are primarily created by auth trigger.
 */
-alter table public.profiles enable row level security;
-
 -- Public read access (safe columns only exist in this table)
 drop policy if exists "profiles_select_public" on public.profiles;
 create policy "profiles_select_public"
@@ -33,3 +31,7 @@ for update
 to authenticated
 using (id = (select auth.uid()))
 with check (id = (select auth.uid()));
+
+set local lock_timeout = '10s'
+;
+alter table public.profiles enable row level security;

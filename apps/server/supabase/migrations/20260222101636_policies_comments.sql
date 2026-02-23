@@ -11,8 +11,6 @@ Goal:
   - Owners may still see their own deleted comments (required to avoid RLS
     soft-delete edge cases where SELECT policies can block UPDATE). 
 */
-alter table public.comments enable row level security;
-
 -- SELECT: anon can read only active
 drop policy if exists "comments_select_public_active" on public.comments;
 create policy "comments_select_public_active"
@@ -58,3 +56,6 @@ with check (
 );
 
 -- No DELETE policy (forces soft deletes)
+set local lock_timeout = '10s'
+;
+alter table public.comments enable row level security;

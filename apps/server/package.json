@@ -14,6 +14,7 @@
     "db:push": "supabase db push",
     "db:pull": "supabase db pull",
     "db:migrate": "supabase migration new",
+    "db:test": "supabase test db",
     "db:types": "supabase gen types typescript --local > packages/shared/supabase/db/types.ts"
   },
   "dependencies": {

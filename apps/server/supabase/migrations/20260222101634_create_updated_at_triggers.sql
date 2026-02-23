@@ -7,27 +7,28 @@ ROLE IN THE SYSTEM:
 
 DESIGN NOTES:
   - Application code must not manually manage updated_at.
-  - This function is reused across multiple tables.
-  - Soft deletes (deleted_at) are treated as a separate lifecycle event.
+  - This function is attached to profiles, comments, and reactions tables.
+  - Special case: On comments table, skip updated_at during soft deletes
+    (when deleted_at is set) to preserve the original edit timestamp.
 */
 create or replace function public.update_updated_at()
 returns trigger
+language plpgsql
 security definer
 set search_path = ''
 as $$
-begin
-  -- Do not overwrite updated_at during soft deletes on comments
-  if tg_table_name = 'comments'
-     and old.deleted_at is null
-     and new.deleted_at is not null then
-    return new;
-  end if;
+BEGIN
+  -- Skip updated_at update during soft deletes (only for comments table)
+  IF TG_TABLE_NAME = 'comments' THEN
+    IF OLD.deleted_at IS NULL AND NEW.deleted_at IS NOT NULL THEN
+      RETURN NEW;
+    END IF;
+  END IF;
 
-  new.updated_at = now();
-  return new;
-end;
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
 $$
-language plpgsql
 ;
 
 -- TRIGGERS

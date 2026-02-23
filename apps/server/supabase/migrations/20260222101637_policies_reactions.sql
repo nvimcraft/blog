@@ -5,8 +5,6 @@ Goal:
   - Public read: allow counting reactions per post.
   - Authenticated users can insert/update/delete only their own reaction.
 */
-alter table public.reactions enable row level security;
-
 -- Public read access (safe: only counts/types/user_id)
 drop policy if exists "reactions_select_public" on public.reactions;
 create policy "reactions_select_public"
@@ -39,3 +37,7 @@ on public.reactions
 for delete
 to authenticated
 using (user_id = (select auth.uid()));
+
+set local lock_timeout = '10s'
+;
+alter table public.reactions enable row level security;

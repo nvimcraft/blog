@@ -15,7 +15,7 @@
     "db:pull": "supabase db pull",
     "db:migrate": "supabase migration new",
     "db:test": "supabase test db",
-    "db:types": "supabase gen types typescript --local > packages/shared/supabase/db/types.ts"
+    "db:types": "cd .. && supabase gen types typescript --local | tee ../packages/shared/supabase/db/types.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.97.0"

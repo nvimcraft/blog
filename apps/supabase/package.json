@@ -1,5 +1,5 @@
 {
-  "name": "@rjleyva-blog/server",
+  "name": "@rjleyva-blog/supabase",
   "author": "RJ Leyva <rjleyva@tutanota.de>",
   "description": "Backend for my personal blog.",
   "version": "0.0.0",
@@ -15,7 +15,7 @@
     "db:pull": "supabase db pull",
     "db:migrate": "supabase migration new",
     "db:test": "supabase test db",
-    "db:types": "cd .. && supabase gen types typescript --local | tee ../packages/shared/supabase/db/types.ts"
+    "db:types": "supabase gen types typescript --local | tee ../../packages/shared/supabase/db/types.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.97.0"

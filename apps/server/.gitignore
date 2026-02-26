@@ -1,0 +1,6 @@
+# Cloudflare
+.env
+*.local
+
+# Resend
+.dev.vars

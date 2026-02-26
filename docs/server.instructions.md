@@ -31,7 +31,7 @@ unit, and allows the Worker to serve assets via an `ASSETS` binding.
 ## Repo layout
 
 - Worker app: `apps/server/`
-- Supabase local config: `apps/server/supabase/`
+- Supabase local config: `apps/supabase/`
 - Recommended Worker entry file:
   - `apps/server/src/worker.ts` (or `apps/server/src/index.ts`)
   - Wrangler `main` should point at this entry.

@@ -1,7 +1,7 @@
 {
   "name": "@rjleyva-blog/supabase",
   "author": "RJ Leyva <rjleyva@tutanota.de>",
-  "description": "Backend for my personal blog.",
+  "description": "Supabase integration for my blog.",
   "version": "0.0.0",
   "type": "module",
   "license": "MIT",

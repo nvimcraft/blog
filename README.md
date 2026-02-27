@@ -36,6 +36,7 @@ Personal blog.
 - Supabase: [docs/supabase.instructions.md](./docs/supabase.instructions.md)
 - Newsletter: [docs/newsletter.instructions.md](./docs/newsletter.instructions.md)
 - ADRs: [docs/adr/](./docs/adr/)
+- Cloudflare AI Ref: [docs/cloudflare.agents.md](./docs/cloudflare.agents.md)
 
 ## License
 

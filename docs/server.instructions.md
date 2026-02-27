@@ -11,6 +11,8 @@ This repo uses **one Cloudflare Worker** to run a “hybrid” deployment:
 Cloudflare Workers Static Assets deploys Worker code + static assets as a single
 unit, and allows the Worker to serve assets via an `ASSETS` binding.
 
+For AI agents: see [docs/cloudflare.agents.md](./cloudflare.agents.md) for CLI commands, API limits, and product references.
+
 ---
 
 ## Scope (What belongs in the Worker)

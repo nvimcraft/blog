@@ -11,6 +11,8 @@ Cloudflare Workers Static Assets deploys Worker code + asset bundle together and
 provides an `ASSETS` binding that can serve files via
 `env.ASSETS.fetch(request)`.
 
+For AI agents: see [docs/cloudflare.agents.md](./cloudflare.agents.md) for wrangler CLI reference.
+
 > Related: `docs/server.instructions.md` defines the routing contract for
 > `/api/*` vs assets.
 

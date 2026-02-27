@@ -11,6 +11,8 @@ export default defineConfig(
       '**/dist/**',
       '**/build/**',
       '**/coverage/**',
+      'apps/server/worker-configuration.d.ts',
+      'packages/shared/supabase/db/types.ts',
     ],
   },
 

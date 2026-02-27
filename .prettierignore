@@ -4,5 +4,6 @@ build
 coverage
 .turbo
 .supabase
+pnpm-lock.yaml
 apps/server/worker-configuration.d.ts
 packages/shared/supabase/db/types.ts

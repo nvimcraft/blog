@@ -4,3 +4,22 @@
 
 # Resend
 .dev.vars
+
+# pnpm
+node_modules/
+.pnpm-debug.log*
+pnpm-lock.yaml
+
+# TypeScript
+*.tsbuildinfo
+
+# Testing (Vitest)
+coverage/
+.vitest/
+
+# ESLint
+.eslintcache
+
+# Wrangler
+.wrangler/
+.cache

@@ -2,6 +2,10 @@
 
 Personal blog.
 
+## Project Board
+
+Tracks blog tasks and issues: [View Project Board](https://github.com/users/nvimcraft/projects/1)
+
 ## Stack
 
 ### Client
